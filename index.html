@@ -4,12 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title>Grundtman Guitars</title>
+    <meta
+      name="description"
+      content="Grundtman Pickups bygger handgjorda gitarrmickar i Sverige. Varje mick är lindad för ton, dynamik och känsla - byggd för musiker som bryr sig om ljud."
+    />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <title>Grundtman Guitars</title>
+    <!-- Social media preview -->
+    <meta
+      property="og:title"
+      content="Grundtman Pickups - Handgjorda gitarrmickar i Sverige"
+    />
+    <meta
+      property="og:description"
+      content="Custom gitarrmickar byggda för ton, känsla och precision."
+    />
+    <meta
+      property="og:image"
+      content="https://grundtmanguitars.se/images/full_logo.png"
+    />
+    <meta property="og:url" content="https://grundtmanguitars.se/" />
+    <meta property="og:type" content="website" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @keyframes fadeSlideUp {
@@ -37,11 +58,10 @@
         alt="Logo"
       />
 
-      <div
-        class="mx-auto flex flex-col items-center md:w-2/3 text-center fade-slide-up"
-      >
-        <p class="text-gray-400">Built for tone, not mass production.</p>
-        <p>Made by hand in my workshop.</p>
+      <div class="mx-auto flex flex-col items-center md:w-2/3 fade-slide-up">
+        <h1 class="text-center text-gray-200 mt-2 max-w-xl mx-auto">
+          Handgjorda gitarrmickar byggda i Örnsköldsvik
+        </h1>
       </div>
     </section>
 
@@ -83,256 +103,242 @@
       </div>
     </section>
 
-    <section>
-      <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+    <!-- 🔊 PRODUKTER -->
+    <section id="produkter" class="max-w-6xl mx-auto px-4 py-20">
+      <h2 class="text-2xl font-semibold text-center mb-4">Produkter</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-slide-up">
+        <!-- Exempel på produktkort -->
         <div
-          class="bg-[#1A1815] grid grid-cols-1 border border-neutral-700 rounded p-6 gap-4 md:grid-cols-2 md:items-center md:gap-8 fade-slide-up"
+          class="bg-[#1A1815] border border-neutral-700 rounded-2xl shadow-sm hover:shadow-md transition p-6"
         >
-          <div>
-            <div class="max-w-prose md:max-w-none">
-              <h2 class="text-2xl font-semibold text-white sm:text-3xl">
-                "The Zebrabucker"
-              </h2>
+          <img
+            src="/images/humbucker_zebra.jpg"
+            alt="Gitarrmick"
+            class="rounded-xl mb-4 mx-auto"
+          />
+          <h3 class="font-semibold text-lg">Zebrabucker</h3>
 
-              <p class="mt-4 text-gray-200">
-                Medium output humbucker i PAF-stil:
-              </p>
+          <div
+            class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs mt-4"
+          >
+            <div class="m:px-8">
+              <ul>
+                <a class="flex items-center">High output pickup:</a>
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
 
-              <div
-                class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs"
-              >
-                <div class="m:px-8">
-                  <ul>
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
+                  <a>Handlindad</a>
+                </li>
 
-                      <a>Handlindad</a>
-                    </li>
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
 
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
+                  <a>Alnico II-magnet</a>
+                </li>
 
-                      <a>Alnico II-magnet</a>
-                    </li>
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
 
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
+                  <a>42 AWG koppartråd</a>
+                </li>
 
-                      <a>42 AWG koppartråd</a>
-                    </li>
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
 
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-
-                      <a>Splittbar</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                  <a>Splittbar</a>
+                </li>
+              </ul>
             </div>
-          </div>
-
-          <div>
-            <img src="images/humbucker_zebra.jpg" class="rounded" alt="" />
           </div>
         </div>
-
         <div
-          class="bg-[#1A1815] mt-2 grid grid-cols-1 border border-neutral-700 rounded p-6 gap-4 md:grid-cols-2 md:items-center md:gap-8 fade-slide-up"
+          class="bg-[#1A1815] border border-neutral-700 rounded-2xl shadow-sm hover:shadow-md transition p-6"
         >
-          <div>
-            <div class="max-w-prose md:max-w-none">
-              <h2 class="text-2xl font-semibold text-white sm:text-3xl">
-                "The Dank"
-              </h2>
+          <img
+            src="/images/humbucker_dank.jpg"
+            alt="Gitarrmick"
+            class="rounded-xl mb-4 mx-auto"
+          />
+          <h3 class="font-semibold text-lg">The Dank</h3>
 
-              <p class="mt-4 text-gray-200">Very high output humbucker:</p>
-
-              <div class="divide-y text-gray-200 divide-gray-200 rounded-2xl">
-                <div class="m:px-8">
-                  <ul>
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-
-                      <a>Handlindad</a>
-                    </li>
-
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-
-                      <a>Alnico VIII-magnet</a>
-                    </li>
-
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-
-                      <a>44 AWG koppartråd</a>
-                    </li>
-
-                    <li class="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5 text-amber-500"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-
-                      <a>Splittbar</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="playlist mt-8">
-                <a>Metalcore:</a>
-                <div class="labeled-audio">
-                  <audio preload="metadata" controls>
-                    <source
-                      src="audio/My Curse - Metalcore.wav"
-                      type="audio/mpeg"
+          <div
+            class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs mt-4"
+          >
+            <div class="m:px-8">
+              <ul>
+                <a class="flex items-center">High output pickup:</a>
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
                     />
-                  </audio>
-                </div>
-                <a>Progressive Rock:</a>
-                <div class="labeled-audio">
-                  <audio preload="metadata" controls>
-                    <source
-                      src="audio/Tom Sawyer - Progressive Rock.wav"
-                      type="audio/mpeg"
+                  </svg>
+
+                  <a>Handlindad</a>
+                </li>
+
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
                     />
-                  </audio>
-                </div>
-                <a>Clean:</a>
-                <div class="labeled-audio">
-                  <audio preload="metadata" controls>
-                    <source
-                      src="audio/Windowpane - Clean.wav"
-                      type="audio/mpeg"
+                  </svg>
+
+                  <a>Alnico VIII-magnet</a>
+                </li>
+
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
                     />
-                  </audio>
-                </div>
-                <a>Traditional Metal:</a>
-                <div class="labeled-audio">
-                  <audio preload="metadata" controls>
-                    <source
-                      src="audio/2 Minutes To Midnight - Traditional Metal.wav"
-                      type="audio/mpeg"
+                  </svg>
+
+                  <a>44 AWG koppartråd</a>
+                </li>
+
+                <li class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-5 text-amber-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
                     />
-                  </audio>
-                </div>
-              </div>
+                  </svg>
+
+                  <a>Splittbar</a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div>
-            <img src="images/humbucker_dank.jpg" class="rounded" alt="" />
+          <div class="playlist mt-8">
+            <a>Metalcore:</a>
+            <div class="labeled-audio">
+              <audio preload="metadata" controls>
+                <source
+                  src="audio/My Curse - Metalcore.wav"
+                  type="audio/mpeg"
+                />
+              </audio>
+            </div>
+            <a>Progressive Rock:</a>
+            <div class="labeled-audio">
+              <audio preload="metadata" controls>
+                <source
+                  src="audio/Tom Sawyer - Progressive Rock.wav"
+                  type="audio/mpeg"
+                />
+              </audio>
+            </div>
+            <a>Clean:</a>
+            <div class="labeled-audio">
+              <audio preload="metadata" controls>
+                <source src="audio/Windowpane - Clean.wav" type="audio/mpeg" />
+              </audio>
+            </div>
+            <a>Traditional Metal:</a>
+            <div class="labeled-audio">
+              <audio preload="metadata" controls>
+                <source
+                  src="audio/2 Minutes To Midnight - Traditional Metal.wav"
+                  type="audio/mpeg"
+                />
+              </audio>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!--
-    START: Footer
--->
+    <!--START: Footer-->
     <footer class="">
       <div class="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32">
         <div
