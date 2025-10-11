@@ -200,6 +200,9 @@
 
                   <a>Splittbar</a>
                 </li>
+
+                <p class="w-full text-center text-2xl"><span class="humbuckerPrice"></span></p>
+
               </ul>
             </div>
           </div>
@@ -295,6 +298,8 @@
 
                   <a>Splittbar</a>
                 </li>
+                
+                <p class="w-full text-center text-2xl"><span class="humbuckerPrice"></span></p>
               </ul>
             </div>
           </div>
@@ -365,7 +370,9 @@
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              <span class="text-sm font-medium hover:text-amber-500">Skicka ett mail!</span>
+              <span class="text-sm font-medium hover:text-amber-500"
+                >Skicka ett mail!</span
+              >
             </a>
 
             <a
@@ -386,7 +393,9 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="text-sm font-medium hover:text-amber-500">Instagram</span>
+              <span class="text-sm font-medium hover:text-amber-500"
+                >Instagram</span
+              >
             </a>
           </div>
 
@@ -398,5 +407,13 @@
     </footer>
 
     <!-- END: Footer -->
+
+    <script>
+      const humbucker_price = 1400;
+
+      document.querySelectorAll(".humbuckerPrice").forEach((el) => {
+        el.textContent = `${humbucker_price} SEK`;
+      });
+    </script>
   </body>
 </html>
