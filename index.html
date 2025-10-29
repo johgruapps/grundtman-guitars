@@ -32,6 +32,16 @@
     <meta property="og:type" content="website" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
     <style>
       @keyframes fadeSlideUp {
         0% {
@@ -309,39 +319,91 @@
             </div>
           </div>
 
-          <div class="playlist mt-8">
-            <a>Metalcore:</a>
-            <div class="labeled-audio">
-              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
-                <source
+          <div class="flex items-start justify-center">
+            <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
+              <!-- Player 1 -->
+              <div
+                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+              >
+                <button class="play-btn flex-shrink-0" aria-label="Play">
+                  <span class="material-symbols-outlined text-3xl"
+                    >play_arrow</span
+                  >
+                </button>
+                <span
+                  class="title text-sm font-medium ml-3 leading-snug break-words"
+                  >Metalcore</span
+                >
+                <audio
+                  class="audio sr-only"
                   src="audio/My Curse - Metalcore.wav"
-                  type="audio/mpeg"
-                />
-              </audio>
-            </div>
-            <a>Progressive Rock:</a>
-            <div class="labeled-audio">
-              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
-                <source
+                  preload="metadata"
+                  controlsList="nodownload"
+                ></audio>
+              </div>
+
+              <!-- Player 2 -->
+              <div
+                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+              >
+                <button class="play-btn flex-shrink-0" aria-label="Play">
+                  <span class="material-symbols-outlined text-3xl"
+                    >play_arrow</span
+                  >
+                </button>
+                <span
+                  class="title text-sm font-medium ml-3 leading-snug break-words"
+                  >Progressive Rock</span
+                >
+                <audio
+                  class="audio sr-only"
                   src="audio/Tom Sawyer - Progressive Rock.wav"
-                  type="audio/mpeg"
-                />
-              </audio>
-            </div>
-            <a>Clean:</a>
-            <div class="labeled-audio">
-              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
-                <source src="audio/Windowpane - Clean.wav" type="audio/mpeg" />
-              </audio>
-            </div>
-            <a>Traditional Metal:</a>
-            <div class="labeled-audio">
-              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
-                <source
+                  preload="metadata"
+                  controlsList="nodownload"
+                ></audio>
+              </div>
+
+              <!-- Player 3 -->
+              <div
+                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+              >
+                <button class="play-btn flex-shrink-0" aria-label="Play">
+                  <span class="material-symbols-outlined text-3xl"
+                    >play_arrow</span
+                  >
+                </button>
+                <span
+                  class="title text-sm font-medium ml-3 leading-snug break-words"
+                  >Clean</span
+                >
+                <audio
+                  class="audio sr-only"
+                  src="audio/Windowpane - Clean.wav"
+                  preload="metadata"
+                  controlsList="nodownload"
+                ></audio>
+              </div>
+
+              <!-- Player 4 -->
+              <div
+                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+              >
+                <button class="play-btn flex-shrink-0" aria-label="Play">
+                  <span class="material-symbols-outlined text-3xl"
+                    >play_arrow</span
+                  >
+                </button>
+                <span
+                  class="title text-sm font-medium ml-3 leading-snug break-words"
+                  >Trad. Metal</span
+                >
+                <audio
+                  class="audio sr-only"
                   src="audio/2 Minutes To Midnight - Traditional Metal.wav"
-                  type="audio/mpeg"
-                />
-              </audio>
+                  preload="metadata"
+                  controlsList="nodownload"
+                ></audio>
+              </div>
             </div>
           </div>
         </div>
@@ -514,6 +576,36 @@
     <!-- END: Footer -->
 
     <script>
+      const players = document.querySelectorAll(".audio-player");
+
+      players.forEach((player) => {
+        const audio = player.querySelector("audio.audio");
+        const btn = player.querySelector(".play-btn");
+        const icon = btn.querySelector(".material-symbols-outlined");
+
+        btn.addEventListener("click", () => {
+          if (audio.paused) {
+            // Pause all others
+            document.querySelectorAll("audio.audio").forEach((a) => {
+              if (a !== audio) a.pause();
+            });
+            audio.play();
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("play", () => (icon.textContent = "pause"));
+        audio.addEventListener(
+          "pause",
+          () => (icon.textContent = "play_arrow")
+        );
+        audio.addEventListener(
+          "ended",
+          () => (icon.textContent = "play_arrow")
+        );
+      });
+
       const audios = document.querySelectorAll("audio");
 
       audios.forEach((audio) => {
