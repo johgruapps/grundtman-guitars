@@ -312,7 +312,7 @@
           <div class="playlist mt-8">
             <a>Metalcore:</a>
             <div class="labeled-audio">
-              <audio preload="metadata" controls>
+              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
                 <source
                   src="audio/My Curse - Metalcore.wav"
                   type="audio/mpeg"
@@ -321,7 +321,7 @@
             </div>
             <a>Progressive Rock:</a>
             <div class="labeled-audio">
-              <audio preload="metadata" controls>
+              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
                 <source
                   src="audio/Tom Sawyer - Progressive Rock.wav"
                   type="audio/mpeg"
@@ -330,13 +330,13 @@
             </div>
             <a>Clean:</a>
             <div class="labeled-audio">
-              <audio preload="metadata" controls>
+              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
                 <source src="audio/Windowpane - Clean.wav" type="audio/mpeg" />
               </audio>
             </div>
             <a>Traditional Metal:</a>
             <div class="labeled-audio">
-              <audio preload="metadata" controls>
+              <audio controlsList="nodownload" preload="metadata" controls style="width:180px; height:25px;">
                 <source
                   src="audio/2 Minutes To Midnight - Traditional Metal.wav"
                   type="audio/mpeg"
@@ -514,6 +514,17 @@
     <!-- END: Footer -->
 
     <script>
+      const audios = document.querySelectorAll("audio");
+
+      audios.forEach((audio) => {
+        audio.addEventListener("play", () => {
+          // Pause all other audio elements
+          audios.forEach((other) => {
+            if (other !== audio) other.pause();
+          });
+        });
+      });
+
       const humbucker_price = 1400;
 
       document.querySelectorAll(".humbuckerPrice").forEach((el) => {
