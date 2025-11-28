@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pickup Coil — Metric calculator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#000000] text-gray-100 flex flex-col">
+    <body onload="startup() ;">
+      <form name="parametersFrm">
+        <div div class="m-6 max-w-2xl">
+          <div class="border-b border-white/10 pb-12">
+            <h2 class="text-2xl font-semibold text-white">
+              Pickup Coil — Calculator
+            </h2>
+
+            <div class="sm:col-span-4">
+              <label class="block text-sm/6 font-medium text-white"
+                >Resistance target (Ω)</label
+              >
+              <div class="mt-2">
+                <input
+                  onchange="updateResistance(ohms.value)"
+                  name="ohms"
+                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label
+                for="country"
+                class="block text-sm/6 font-medium text-white"
+                >Bobbin:</label
+              >
+              <div class="mt-2 grid grid-cols-1">
+                <select
+                  onchange="updateBobbinType(selectedIndex) ; showBobbinSpecs() ;"
+                  name="bobbin"
+                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                >
+                  <option value="7" selected="">Humbucker (50 mm)</option>
+                  <option value="11">Humbucker (52 mm)</option>
+                  <option value="10">Strat 1967</option>
+                </select>
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  data-slot="icon"
+                  aria-hidden="true"
+                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+                >
+                  <path
+                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="sm:col-span-3">
+              <label
+                for="country"
+                class="block text-sm/6 font-medium text-white"
+                >Insulation build:</label
+              >
+              <div class="mt-2 grid grid-cols-1">
+                <select
+                  onchange="updateWireSelection(selectedIndex);showWireInfo();"
+                  name="wireAWG"
+                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                >
+                  <option value="18" selected="">42 AWG</option>
+                  <option value="19">43 AWG</option>
+                  <option value="20">44 AWG</option>
+                </select>
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  data-slot="icon"
+                  aria-hidden="true"
+                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+                >
+                  <path
+                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="sm:col-span-3">
+              <label
+                for="country"
+                class="block text-sm/6 font-medium text-white"
+                >Wire Gauge:</label
+              >
+              <div class="mt-2 grid grid-cols-1">
+                <select
+                  onchange="updateWireBuild(selectedIndex); showBuildInfo() ;"
+                  name="build"
+                  size="1"
+                  selected="0"
+                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                >
+                  <option selected="">single</option>
+                  <option>heavy</option>
+                </select>
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  data-slot="icon"
+                  aria-hidden="true"
+                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+                >
+                  <path
+                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <button
+              name="banzai"
+              value="calculate WINDS"
+              onclick="doWindsTable();"
+              class="m-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Calculate!
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <form name="displayFrm" class="m-6">
+        <label class="block text-lg text-white">Bobbin dimensions:</label>
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th>Length:</th>
+              <th>Width:</th>
+              <th>Height:</th>
+              <th>Flange:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  name="L"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                  onchange="return adjustBobbin(L,W,H,flange) ;"
+                />
+              </td>
+              <td>
+                <input
+                  name="W"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                  onchange="return adjustBobbin(L,W,H,flange) ;"
+                />
+              </td>
+              <td>
+                <input
+                  name="H"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                  onchange="return adjustBobbin(L,W,H,flange) ;"
+                />
+              </td>
+              <td>
+                <input
+                  name="flange"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                  onchange="return adjustBobbin(L,W,H,flange) ;"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+        <br />
+
+        <label class="block text-lg text-white">Wire specifications:</label>
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th>AWG</th>
+              <th>Insulated diameter</th>
+              <th>ohms/1000ft</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  name="gauge"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                />
+              </td>
+              <td>
+                <input
+                  name="dia"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                />
+              </td>
+              <td>
+                <input
+                  name="Rdc1k"
+                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+        <br />
+
+        <table style="font-weight: bold">
+          <tbody>
+            <td>WINDINGS BY FILL FACTOR</td>
+            <tr>
+              <td></td>
+
+              <td>loose scatter (62%)</td>
+              <td>tight scatter (72%)</td>
+              <td>loose machine (78.5%)</td>
+              <td>tight machine (90.7%)</td>
+              <td>perfect (100%)</td>
+            </tr>
+            <tr>
+              <td>WINDS</td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="winds1"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="winds2"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="winds3"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="winds4"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="winds5"
+                  readonly="readonly"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>layers</td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="layers1"
+                  id="l1"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="layers2"
+                  id="l2"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="layers3"
+                  id="l3"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="layers4"
+                  id="l4"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="layers5"
+                  id="l5"
+                  readonly="readonly"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>max layers</td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxlayers1"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxlayers2"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxlayers3"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxlayers4"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxlayers5"
+                  readonly="readonly"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>winds per layer</td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="wpl1"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="wpl2"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="wpl3"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="wpl4"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="wpl5"
+                  readonly="readonly"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>max winds</td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  clic
+                  name="maxwinds1"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxwinds2"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxwinds3"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxwinds4"
+                  readonly="readonly"
+                />
+              </td>
+              <td>
+                <input
+                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                  maxlength="6"
+                  size="6"
+                  name="maxwinds5"
+                  readonly="readonly"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </body>
+
+    <script>
+      var traceEnabled = false; //true ;
+      function trace(str) {
+        if (traceEnabled) document.traceForm.dump.value += str + "\n";
+      }
+      function clearTraceWindow() {
+        if (traceEnabled) document.traceForm.dump.value = "";
+      }
+
+      function roundoff(parnumber, parplaces) {
+        with (Math) {
+          var number = parnumber - floor(parnumber);
+          var number = number * pow(10, parplaces);
+          number = round(number);
+          number = number / pow(10, parplaces);
+          number = number + floor(parnumber);
+          return number;
+        }
+      }
+      // quadratic root type constructor
+      function quadraticRoot(discriminant, r1, r2) {
+        this.discriminant = discriminant;
+        this.r1 = r1;
+        this.r2 = r2;
+      }
+      function quadratic(a, b, c) {
+        var disc;
+        var roots = new quadraticRoot(0, 0, 0);
+        disc = b * b - 4 * a * c;
+        roots.discriminant = disc;
+        if (disc > 0) {
+          if (b == 0) {
+            var r = Math.abs((0.5 * Math.sqrt(disc)) / a);
+            roots.r1 = -r;
+            roots.r2 = r;
+          } else {
+            var sgnb = b > 0 ? 1 : -1;
+            var temp = -0.5 * (b + sgnb * Math.sqrt(disc));
+            var r1 = temp / a;
+            var r2 = c / temp;
+            if (r1 < r2) {
+              roots.r1 = r1;
+              roots.r2 = r2;
+            } else {
+              roots.r1 = r2;
+              roots.r2 = r1;
+            }
+          }
+          return roots;
+        } else if (disc == 0) {
+          roots.r1 = (-0.5 * b) / a;
+          roots.r2 = (-0.5 * b) / a;
+          return roots;
+        } else {
+          return roots;
+        }
+      }
+      /*
+  resistivity is in units ohm-meter
+  and needs conversion to ohms-1000Ft.
+  */
+      var inchesPerMeter = 1000.0 / 25.4;
+      var INCHES_PER_1000FT = 1000 * 12;
+      var COPPER_RESISTIVITY = 1.724e-8; /* ohm-meter */
+      //
+      function circularArea(dia) {
+        var rad = dia / 2.0;
+        return rad * rad * 3.1415926;
+      }
+      function Rin(dia) {
+        return COPPER_RESISTIVITY / (12.0 * circularArea(dia) + " inch");
+      }
+      function R1000ft(dia) {
+        return (
+          (COPPER_RESISTIVITY * inchesPerMeter * INCHES_PER_1000FT) /
+          circularArea(dia)
+        );
+      }
+
+      function dumpWinds() {
+        //trace("winds:"+COIL.winds + " layers:" + COIL.layers + " maxlayers:" + COIL.maxlayers + " wpl:" + COIL.wpl ) ;
+      }
+      function showWinds1() {
+        var frm = document.displayFrm;
+        var e = document.getElementById("l1");
+        dumpWinds();
+        frm.winds1.value = COIL.winds;
+        frm.maxlayers1.value = COIL.maxlayers;
+        frm.wpl1.value = COIL.wpl;
+        frm.maxwinds1.value = COIL.maxlayers * COIL.wpl;
+
+        frm.layers1.value = COIL.layers;
+
+        if (COIL.layers > COIL.maxlayers) {
+          e.style.color = "red";
+        } else {
+          e.style.color = "rgb(148, 58, 184)";
+        }
+      }
+      function showWinds2() {
+        var frm = document.displayFrm;
+        var e = document.getElementById("l2");
+        dumpWinds();
+        frm.winds2.value = COIL.winds;
+        frm.layers2.value = COIL.layers;
+        if (COIL.layers > COIL.maxlayers) {
+          e.style.color = "red";
+        } else {
+          e.style.color = "rgb(148, 58, 184)";
+        }
+
+        frm.maxlayers2.value = COIL.maxlayers;
+        frm.wpl2.value = COIL.wpl;
+        frm.maxwinds2.value = COIL.maxlayers * COIL.wpl;
+      }
+      function showWinds3() {
+        var frm = document.displayFrm;
+        var e = document.getElementById("l3");
+        frm.winds3.value = COIL.winds;
+        frm.layers3.value = COIL.layers;
+        if (COIL.layers > COIL.maxlayers) {
+          e.style.color = "red";
+        } else {
+          e.style.color = "rgb(148, 58, 184)";
+        }
+
+        frm.maxlayers3.value = COIL.maxlayers;
+        frm.wpl3.value = COIL.wpl;
+        frm.maxwinds3.value = COIL.maxlayers * COIL.wpl;
+      }
+      function showWinds4() {
+        var frm = document.displayFrm;
+        var e = document.getElementById("l4");
+        frm.winds4.value = COIL.winds;
+        frm.layers4.value = COIL.layers;
+        if (COIL.layers > COIL.maxlayers) {
+          e.style.color = "red";
+        } else {
+          e.style.color = "rgb(148, 58, 184)";
+        }
+
+        frm.maxlayers4.value = COIL.maxlayers;
+        frm.wpl4.value = COIL.wpl;
+        frm.maxwinds4.value = COIL.maxlayers * COIL.wpl;
+      }
+      function showWinds5() {
+        var frm = document.displayFrm;
+        var e = document.getElementById("l5");
+        frm.winds5.value = COIL.winds;
+        frm.layers5.value = COIL.layers;
+        if (COIL.layers > COIL.maxlayers) {
+          e.style.color = "red";
+        } else {
+          e.style.color = "rgb(148, 58, 184)";
+        }
+
+        frm.maxlayers5.value = COIL.maxlayers;
+        frm.wpl5.value = COIL.wpl;
+        frm.maxwinds5.value = COIL.maxlayers * COIL.wpl;
+      }
+
+      /*
+       ** COIL handling routines
+       */
+      var COIL = new Array();
+      // coil type constructor
+      function coil_t(
+        name,
+        L,
+        W,
+        H,
+        flange,
+        gauge,
+        dia,
+        Rdc1k,
+        layers,
+        wpl,
+        wplinch,
+        winds,
+        ohms,
+        fill
+      ) {
+        this.name = name;
+        this.L = L;
+        this.W = W;
+        this.H = H;
+        this.flange = flange;
+        this.gauge = gauge;
+        this.dia = dia;
+        this.Rdc1k = Rdc1k;
+        this.layers = 0;
+        this.wpl = 0;
+        this.wplinch = 0;
+        this.winds = winds;
+        this.ohms = ohms;
+        this.fill = fill;
+        this.maxlayers = 0;
+      }
+      function initCOIL() {
+        COIL = new coil_t(
+          "strat",
+          2.5,
+          0.1875,
+          0.625,
+          0.75,
+          42,
+          0.0028,
+          1659,
+          0,
+          0,
+          0,
+          0,
+          0,
+          72
+        );
+      }
+
+      function adjustBobbin(L, W, H, flange) {
+        //trace("adjustBobbin(L,W,H,flange) before: (" + COIL.L + ", " + COIL.W + ", " +COIL.H + ", " + COIL.flange  + ")"  ) ;
+
+        COIL.L = L.value;
+        COIL.W = W.value;
+        COIL.H = H.value;
+        COIL.flange = flange.value;
+
+        //trace("adjustBobbin(L,W,H,flange) AFTER: (" + COIL.L + ", " + COIL.W + ", " +COIL.H + ", " + COIL.flange   + ")"  ) ;
+      }
+      /*
+       ** Wire handling routines
+       */
+      // constructor for magnet wire descriptor
+      function wire_t(awg, bare, single, heavy, rdc) {
+        this.awg = awg;
+        this.bare = bare;
+        this.single = single;
+        this.heavy = heavy;
+        this.rdc = R1000ft(bare);
+      }
+      //
+      var wireTable = new Array();
+      //
+      function initWireTable() {
+        var idx = 0;
+        wireTable[idx++] = new wire_t(42, 0.0025, 0.0028, 0.003);
+        wireTable[idx++] = new wire_t(43, 0.0022, 0.0025, 0.0027);
+        wireTable[idx++] = new wire_t(44, 0.002, 0.0022, 0.0025);
+      }
+      //
+      function initWireOptionList() {
+        var wireOptions = document.parametersFrm.wireAWG.options;
+        var isSelected = false;
+        for (var i = 0; i < wireTable.length; i++) {
+          // set the default wire gauge to awg 42
+          isSelected = wireTable[i].awg == 42 ? true : false;
+
+          wireOptions[i] = new Option(
+            wireTable[i].awg,
+            i,
+            isSelected,
+            isSelected
+          );
+        }
+      }
+      function setWireOptionIndex(widx) {
+        document.parametersFrm.wireAWG.selectedIndex = widx;
+      }
+      //
+      function showWireInfo() {
+        var frm = document.displayFrm;
+        frm.gauge.value = COIL.gauge;
+        frm.dia.value = COIL.dia + " inch";
+        frm.Rdc1k.value = COIL.Rdc1k.toFixed(0);
+      }
+      function showBuildInfo() {
+        document.displayFrm.dia.value = COIL.dia;
+      }
+      function updateWireBuild(idx) {
+        var widx = parametersFrm.wireAWG.selectedIndex;
+
+        if (idx != 0) COIL.dia = wireTable[widx].heavy;
+        else COIL.dia = wireTable[widx].single;
+      }
+      function updateWireSelection(idx) {
+        COIL.gauge = wireTable[idx].awg;
+        COIL.Rdc1k = wireTable[idx].rdc;
+        updateWireBuild(parametersFrm.build.selectedIndex);
+      }
+      /*
+       ** Fill factor routines
+       */
+      function updateResistance(rdc) {
+        //trace("updateResistance(rdc) rdc=" + rdc) ;
+        var ohms = parseFloat(rdc);
+        if (rdc <= 0 || rdc > 128000) {
+          rdc = bobbinTable[parametersFrm.bobbin.selectedIndex].ohms;
+        }
+        COIL.ohms = rdc;
+        document.parametersFrm.ohms.value = COIL.ohms;
+        //document.displayFrm.wirelength.value = roundoff(((COIL.ohms / COIL.Rdc1k) * 1000), 0) ;
+      }
+      //
+      var bobbinTable = new Array();
+      // bobbin constructor
+      function bobbin(
+        description,
+        length,
+        width,
+        height,
+        flange,
+        wire,
+        ohms,
+        winds
+      ) {
+        this.name = description;
+        this.L = length;
+        this.W = width;
+        this.H = height;
+        this.flange = flange;
+        this.wire = wire;
+        this.ohms = ohms;
+        this.winds = winds;
+      }
+      //
+      function initBobbinTable() {
+        var idx = 0;
+        /* NOTE: "flange is the bobbin width, not the core width */
+        //********************....description........length..width.height.flange..wire.ohms..winds
+        //IN INCHES
+        bobbinTable[idx++] = new bobbin(
+          "Humbucker (50 mm)",
+          2.225,    //LENGTH
+          0.26,     //WIDTH
+          0.338582, //HEIGHT
+          0.7,      //FLANGE
+          42,       //STANDARD AWG
+          3715,     //STANDARD OHMS
+          4200      //STANDARD WINDS
+        );
+        bobbinTable[idx++] = new bobbin(
+          "PAF (50 mm)",
+          2.225,
+          0.26,
+          0.25,
+          0.7,
+          42,
+          3715,
+          4200
+        );
+        bobbinTable[idx++] = new bobbin(
+          "Humbucker (52 mm)",
+          2.225,
+          0.26,
+          0.25,
+          0.7,
+          42,
+          3715,
+          4200
+        );
+        bobbinTable[idx++] = new bobbin(
+          "Strat 1967",
+          2.25,
+          0.1875,
+          0.436,
+          0.625,
+          42,
+          5880,
+          7656
+        );
+      }
+      // build pickup option list for select box menu
+      function initBobbinOptionList() {
+        var optionList = document.parametersFrm.bobbin.options;
+        var i = 0;
+        optionList[0] = new Option(bobbinTable[0].name, i, true, true);
+        for (i = 0; i < bobbinTable.length; i++) {
+          // select newest addition to table as low-rent unit test
+          isSelected = bobbinTable[i].name == "Precision Bass" ? true : false;
+          optionList[i] = new Option(
+            bobbinTable[i].name,
+            i,
+            isSelected,
+            isSelected
+          );
+        }
+      }
+      // show bobbin dimensions in form
+      function showBobbinSpecs() {
+        var frm = document.displayFrm;
+        frm.L.value = (COIL.L * 25.4).toFixed(1);
+        frm.W.value = (COIL.W * 25.4).toFixed(2);
+        frm.H.value = (COIL.H * 25.4).toFixed(2);
+        frm.flange.value = (COIL.flange * 25.4).toFixed(2);
+      }
+      // put bobbin dimensions into COIL structure
+      function updateBobbinType(idx) {
+        if (idx < 0 || idx >= bobbinTable.length) {
+          //trace("updateBobbinType(idx) idx out of range:" + idx) ;
+          return;
+        }
+        COIL.L = bobbinTable[idx].L;
+        COIL.W = bobbinTable[idx].W;
+        COIL.H = bobbinTable[idx].H;
+        COIL.flange = bobbinTable[idx].flange;
+        COIL.winds = bobbinTable[idx].winds;
+        COIL.gauge = bobbinTable[idx].gauge;
+        updateResistance(bobbinTable[idx].ohms);
+        //	  showWinds() ;
+      }
+      /*
+       ** The money shot
+       */
+      function calcMaxLayers() {
+        var MaxLayers =
+          (COIL.flange - COIL.W) / 2.0 / (COIL.dia / (COIL.fill / 100));
+        return roundoff(MaxLayers + 0.5, 0);
+      }
+
+      function calcWindsPerLayer(bobbinHeight, wireDia, fillFactor) {
+        return bobbinHeight / (wireDia / fillFactor);
+      }
+
+      function windsFromRdc() {
+        //trace("windsFromRdc()") ;
+        var a, b, c;
+        var lenInches;
+        var wireDia = COIL.dia;
+        //var fill = Math.sqrt(COIL.fill/100) ;
+        var fill = COIL.fill / 100;
+        lenInches = COIL.ohms / (COIL.Rdc1k / INCHES_PER_1000FT);
+        wireDia = wireDia / fill;
+        with (Math) {
+          a = PI * wireDia;
+          b = 2.0 * COIL.L + (PI - 2.0) * COIL.W + PI * wireDia;
+          c = -((lenInches * wireDia) / COIL.H);
+          var q = quadratic(a, b, c);
+        }
+        if (q.discriminant < 0) {
+          //trace("error: roots are unreal\n") ;
+        } else {
+          COIL.layers = q.r1 < 0 ? q.r2 : q.r1;
+          COIL.wpl = roundoff(calcWindsPerLayer(COIL.H, COIL.dia, fill), 0);
+          COIL.wplinch = roundoff(COIL.wpl * (1.0 / COIL.H), 1);
+          COIL.winds = roundoff(COIL.wpl * COIL.layers, 0);
+          COIL.layers = roundoff(COIL.layers, 1);
+          COIL.maxlayers = calcMaxLayers();
+        }
+      }
+
+      function doWindsTable() {
+        //windsFromRdc() ;
+        //return ;
+
+        COIL.fill = 62; // loose scatter wind
+        windsFromRdc();
+        showWinds1();
+
+        COIL.fill = 72; // tight scatter wind
+        windsFromRdc();
+        showWinds2();
+
+        COIL.fill = 78.5; // square fill model
+        windsFromRdc();
+        showWinds3();
+
+        COIL.fill = 90.7; // hexagonal fill model
+        windsFromRdc();
+        showWinds4();
+
+        COIL.fill = 100; // perfect 100% fill factor
+        windsFromRdc();
+        showWinds5();
+      }
+
+      /*
+       ** Display routines
+       */
+      function showCoilSpecs() {
+        showWireInfo();
+        showBobbinSpecs();
+        //showWindsData() ;
+      }
+      function startup() {
+        initCOIL();
+
+        initWireTable();
+        initWireOptionList();
+        initBobbinTable();
+        initBobbinOptionList();
+
+        updateBobbinType(parametersFrm.bobbin.selectedIndex);
+        updateWireSelection(parametersFrm.wireAWG.selectedIndex);
+        parametersFrm.build.selectedIndex = 0;
+        updateWireBuild(parametersFrm.build.selectedIndex);
+        updateResistance(0);
+
+        windsFromRdc();
+        //	  showWinds() ;
+        showCoilSpecs();
+        //	  showWindsData()  ;
+      }
+    </script>
+  </body>
+</html>
