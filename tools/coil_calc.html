@@ -42,9 +42,6 @@
                   name="bobbin"
                   class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                 >
-                  <option value="7" selected="">Humbucker (50 mm)</option>
-                  <option value="11">Humbucker (52 mm)</option>
-                  <option value="10">Strat 1967</option>
                 </select>
                 <svg
                   viewBox="0 0 16 16"
@@ -73,9 +70,6 @@
                   name="wireAWG"
                   class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
                 >
-                  <option value="18" selected="">42 AWG</option>
-                  <option value="19">43 AWG</option>
-                  <option value="20">44 AWG</option>
                 </select>
                 <svg
                   viewBox="0 0 16 16"
@@ -813,10 +807,10 @@
         //********************....description........length..width.height.flange..wire.ohms..winds
         //IN INCHES
         bobbinTable[idx++] = new bobbin(
-          "Humbucker (50 mm)",
+          "Humbucker (50 mm) (8,5mm height)",
           2.225,    //LENGTH
           0.26,     //WIDTH
-          0.338582, //HEIGHT
+          0.3348, //HEIGHT
           0.7,      //FLANGE
           42,       //STANDARD AWG
           3715,     //STANDARD OHMS
@@ -833,10 +827,10 @@
           4200
         );
         bobbinTable[idx++] = new bobbin(
-          "Humbucker (52 mm)",
+          "Humbucker (52 mm) (8,5mm height)",
           2.225,
           0.26,
-          0.25,
+          0.3348, //HEIGHT
           0.7,
           42,
           3715,
