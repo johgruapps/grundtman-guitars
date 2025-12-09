@@ -8,473 +8,506 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="bg-[#000000] text-gray-100 flex flex-col">
-    <body onload="startup() ;">
-      <form name="parametersFrm">
-        <div div class="m-6 max-w-2xl">
-          <div class="border-b border-white/10 pb-12">
-            <h2 class="text-2xl font-semibold text-white">
-              Pickup Coil — Calculator
-            </h2>
+  <!-- Based on http://www.jdguitarworks.com/coil/coil.html -->
 
-            <div class="sm:col-span-4">
-              <label class="block text-sm/6 font-medium text-white"
-                >Resistance target (Ω)</label
-              >
-              <div class="mt-2">
-                <input
-                  onchange="updateResistance(ohms.value)"
-                  name="ohms"
-                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                />
-              </div>
-            </div>
+  <body class="bg-[#000000] text-gray-100 flex flex-col" onload="startup() ;">
+    <form name="parametersFrm">
+      <div div class="m-6 max-w-2xl">
+        <div class="border-b border-white/10 pb-12">
+          <h2 class="text-2xl font-semibold text-white">
+            Pickup Coil — Calculator
+          </h2>
 
-            <div class="sm:col-span-3">
-              <label
-                for="country"
-                class="block text-sm/6 font-medium text-white"
-                >Bobbin:</label
-              >
-              <div class="mt-2 grid grid-cols-1">
-                <select
-                  onchange="updateBobbinType(selectedIndex) ; showBobbinSpecs() ;"
-                  name="bobbin"
-                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                ></select>
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  data-slot="icon"
-                  aria-hidden="true"
-                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                >
-                  <path
-                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="sm:col-span-3">
-              <label
-                for="country"
-                class="block text-sm/6 font-medium text-white"
-                >Wire Gauge:</label
-              >
-              <div class="mt-2 grid grid-cols-1">
-                <select
-                  onchange="updateWireSelection(selectedIndex);showWireInfo();"
-                  name="wireAWG"
-                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                ></select>
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  data-slot="icon"
-                  aria-hidden="true"
-                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                >
-                  <path
-                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="sm:col-span-3">
-              <label
-                for="country"
-                class="block text-sm/6 font-medium text-white"
-                >Insulation build:</label
-              >
-              <div class="mt-2 grid grid-cols-1">
-                <select
-                  onchange="updateWireBuild(selectedIndex); showBuildInfo() ;"
-                  name="build"
-                  size="1"
-                  selected="0"
-                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                >
-                  <option selected="">single</option>
-                  <option>heavy</option>
-                </select>
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  data-slot="icon"
-                  aria-hidden="true"
-                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                >
-                  <path
-                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-            <button
-              name="banzai"
-              value="calculate WINDS"
-              onclick="doWindsTable();"
-              class="m-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+          <div class="sm:col-span-4">
+            <label class="block text-sm/6 font-medium text-white"
+              >Resistance target (Ω)</label
             >
-              Calculate!
-            </button>
+            <div class="mt-2">
+              <input
+                onchange="updateResistance(ohms.value)"
+                name="ohms"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+              />
+            </div>
           </div>
+
+          <div class="sm:col-span-3">
+            <label for="country" class="block text-sm/6 font-medium text-white"
+              >Bobbin:</label
+            >
+            <div class="mt-2 grid grid-cols-1">
+              <select
+                onchange="updateBobbinType(selectedIndex) ; showBobbinSpecs() ;"
+                name="bobbin"
+                class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+              ></select>
+              <svg
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                data-slot="icon"
+                aria-hidden="true"
+                class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+              >
+                <path
+                  d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="sm:col-span-3">
+            <label for="wireAWG" class="block text-sm/6 font-medium text-white"
+              >Wire Gauge:</label
+            >
+
+            <div class="flex items-center justify-center">
+              <ul
+                class="mx-auto grid max-w-full w-full grid-cols-3 gap-x-5 px-8"
+                id="wireAWGContainer"
+              >
+                <li>
+                  <input
+                    type="radio"
+                    name="wireAWG"
+                    id="wireAWG_42"
+                    value="42"
+                    class="peer sr-only"
+                    onchange="updateWireSelection(this.value);showWireInfo();"
+                    checked
+                  />
+                  <label
+                    for="wireAWG_42"
+                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 py-2 px-4 hover:bg-gray-500 peer-checked:bg-indigo-500 peer-checked:text-white peer-checked:border-transparent transition-all duration-300 ease-in-out"
+                  >
+                    42
+                  </label>
+                </li>
+
+                <li>
+                  <input
+                    type="radio"
+                    name="wireAWG"
+                    id="wireAWG_43"
+                    value="43"
+                    class="peer sr-only"
+                    onchange="updateWireSelection(this.value);showWireInfo();"
+                  />
+                  <label
+                    for="wireAWG_43"
+                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 py-2 px-4 hover:bg-gray-500 peer-checked:bg-indigo-500 peer-checked:text-white peer-checked:border-transparent transition-all duration-300 ease-in-out"
+                  >
+                    43
+                  </label>
+                </li>
+
+                <li>
+                  <input
+                    type="radio"
+                    name="wireAWG"
+                    id="wireAWG_44"
+                    value="44"
+                    class="peer sr-only"
+                    onchange="updateWireSelection(this.value);showWireInfo();"
+                  />
+                  <label
+                    for="wireAWG_44"
+                    class="flex justify-center cursor-pointer rounded-full border border-gray-300 py-2 px-4 hover:bg-gray-500 peer-checked:bg-indigo-500 peer-checked:text-white peer-checked:border-transparent transition-all duration-300 ease-in-out"
+                  >
+                    44
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="sm:col-span-3">
+            <label for="country" class="block text-sm/6 font-medium text-white"
+              >Insulation build:</label
+            >
+            <div class="mt-2 grid grid-cols-1">
+              <select
+                onchange="updateWireBuild(selectedIndex); showBuildInfo() ;"
+                name="build"
+                size="1"
+                selected="0"
+                class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white/5 py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-white/10 *:bg-gray-800 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+              >
+                <option selected="">single</option>
+                <option>heavy</option>
+              </select>
+              <svg
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                data-slot="icon"
+                aria-hidden="true"
+                class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+              >
+                <path
+                  d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+          <button
+            name="banzai"
+            value="calculate WINDS"
+            onclick="doWindsTable();"
+            class="m-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+          >
+            Calculate!
+          </button>
         </div>
-      </form>
+      </div>
+    </form>
 
-      <form name="displayFrm" class="m-6">
-        <label class="block text-lg text-white">Bobbin dimensions (in mm):</label>
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th>Length (core):</th>
-              <th>Width (core):</th>
-              <th>Height (for winding):</th>
-              <th>Flange (total width):</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input
-                  name="L"
-                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                  onchange="return adjustBobbin(L,W,H,flange) ;"
-                />
-              </td>
-              <td>
-                <input
-                  name="W"
-                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                  onchange="return adjustBobbin(L,W,H,flange) ;"
-                />
-              </td>
-              <td>
-                <input
-                  name="H"
-                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                  onchange="return adjustBobbin(L,W,H,flange) ;"
-                />
-              </td>
-              <td>
-                <input
-                  name="flange"
-                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                  onchange="return adjustBobbin(L,W,H,flange) ;"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <form name="displayFrm" class="m-6">
+      <label class="block text-lg text-white">Bobbin dimensions (in mm):</label>
+      <table class="table-auto">
+        <thead>
+          <tr>
+            <th>Length (core):</th>
+            <th>Width (core):</th>
+            <th>Height (for winding):</th>
+            <th>Flange (total width):</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                name="L"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                onchange="return adjustBobbin(L,W,H,flange) ;"
+              />
+            </td>
+            <td>
+              <input
+                name="W"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                onchange="return adjustBobbin(L,W,H,flange) ;"
+              />
+            </td>
+            <td>
+              <input
+                name="H"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                onchange="return adjustBobbin(L,W,H,flange) ;"
+              />
+            </td>
+            <td>
+              <input
+                name="flange"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+                onchange="return adjustBobbin(L,W,H,flange) ;"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <br />
-        <br />
+      <br />
+      <br />
 
-        <label class="block text-lg text-white">Wire specifications:</label>
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th>AWG</th>
-              <th>Insulated diameter</th>
-              <th>ohms/1000ft</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input
-                  name="gauge"
-                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                />
-              </td>
-              <td>
-                <input
-                  name="dia"
-                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                />
-              </td>
-              <td>
-                <input
-                  name="Rdc1k"
-                  class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <label class="block text-lg text-white">Wire specifications:</label>
+      <table class="table-auto">
+        <thead>
+          <tr>
+            <th>AWG</th>
+            <th>Insulated diameter</th>
+            <th>ohms/1000ft</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                name="gauge"
+                class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+              />
+            </td>
+            <td>
+              <input
+                name="dia"
+                class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+              />
+            </td>
+            <td>
+              <input
+                name="Rdc1k"
+                class="pointer-events-none block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-gray-400 sm:text-sm/6"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <br />
-        <br />
+      <br />
+      <br />
 
-        <table style="font-weight: bold">
-          <tbody>
-            <td>WINDINGS BY FILL FACTOR</td>
-            <tr>
-              <td></td>
+      <table style="font-weight: bold">
+        <tbody>
+          <td>WINDINGS BY FILL FACTOR</td>
+          <tr>
+            <td></td>
 
-              <td>loose scatter (62%)</td>
-              <td>tight scatter (72%)</td>
-              <td>loose machine (78.5%)</td>
-              <td>tight machine (90.7%)</td>
-              <td>perfect (100%)</td>
-            </tr>
-            <tr>
-              <td>WINDS</td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="winds1"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="winds2"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="winds3"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="winds4"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="winds5"
-                  readonly="readonly"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>layers</td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="layers1"
-                  id="l1"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="layers2"
-                  id="l2"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="layers3"
-                  id="l3"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="layers4"
-                  id="l4"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="layers5"
-                  id="l5"
-                  readonly="readonly"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>max layers</td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxlayers1"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxlayers2"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxlayers3"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxlayers4"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxlayers5"
-                  readonly="readonly"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>winds per layer</td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="wpl1"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="wpl2"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="wpl3"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="wpl4"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="wpl5"
-                  readonly="readonly"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>max winds</td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  clic
-                  name="maxwinds1"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxwinds2"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxwinds3"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxwinds4"
-                  readonly="readonly"
-                />
-              </td>
-              <td>
-                <input
-                  class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
-                  maxlength="6"
-                  size="6"
-                  name="maxwinds5"
-                  readonly="readonly"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
-    </body>
+            <td>loose scatter (62%)</td>
+            <td>tight scatter (72%)</td>
+            <td>loose machine (78.5%)</td>
+            <td>tight machine (90.7%)</td>
+            <td>perfect (100%)</td>
+          </tr>
+          <tr>
+            <td>WINDS</td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="winds1"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="winds2"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="winds3"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="winds4"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="winds5"
+                readonly="readonly"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>layers</td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="layers1"
+                id="l1"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="layers2"
+                id="l2"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="layers3"
+                id="l3"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="layers4"
+                id="l4"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="layers5"
+                id="l5"
+                readonly="readonly"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>max layers</td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxlayers1"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxlayers2"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxlayers3"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxlayers4"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxlayers5"
+                readonly="readonly"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>winds per layer</td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="wpl1"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="wpl2"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="wpl3"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="wpl4"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="wpl5"
+                readonly="readonly"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>max winds</td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                clic
+                name="maxwinds1"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxwinds2"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxwinds3"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxwinds4"
+                readonly="readonly"
+              />
+            </td>
+            <td>
+              <input
+                class="rounded-md bg-white/5 px-3 py-1.5 text-white sm:text-sm/6 pointer-events-none"
+                maxlength="6"
+                size="6"
+                name="maxwinds5"
+                readonly="readonly"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
 
     <script>
       var traceEnabled = false; //true ;
@@ -727,18 +760,34 @@
       }
       //
       function initWireOptionList() {
-        var wireOptions = document.parametersFrm.wireAWG.options;
-        var isSelected = false;
-        for (var i = 0; i < wireTable.length; i++) {
-          // set the default wire gauge to awg 42
-          isSelected = wireTable[i].awg == 42 ? true : false;
+        var container = document.getElementById("wireAWGContainer");
+        container.innerHTML = ""; // rensa
 
-          wireOptions[i] = new Option(
-            wireTable[i].awg,
-            i,
-            isSelected,
-            isSelected
-          );
+        for (var i = 0; i < wireTable.length; i++) {
+          var isSelected = wireTable[i].awg == 42; // default 42
+          var id = "wireAWG_" + wireTable[i].awg;
+
+          container.innerHTML += `
+<li>
+  <input
+    type="radio"
+    name="wireAWG"
+    value="${wireTable[i].awg}"
+    id="${id}"
+    class="peer sr-only"
+    ${isSelected ? "checked" : ""}
+    onchange="updateWireSelection(this.value); showWireInfo();"
+  />
+  <label
+    for="${id}"
+    class="flex justify-center cursor-pointer rounded-full border border-gray-300 py-2 px-4 hover:bg-gray-500
+           transition-all duration-300 ease-in-out
+           peer-checked:bg-indigo-500 peer-checked:text-white peer-checked:border-transparent"
+  >
+    ${wireTable[i].awg}
+  </label>
+</li>
+        `;
         }
       }
       function setWireOptionIndex(widx) {
@@ -746,23 +795,53 @@
       }
       //
       function showWireInfo() {
+        if (!COIL) return; // inget valt än
+
         var frm = document.displayFrm;
+
+        // Gauge (AWG)
         frm.gauge.value = COIL.gauge;
+
+        // Diameter
         frm.dia.value = COIL.dia + " inch";
-        frm.Rdc1k.value = COIL.Rdc1k.toFixed(0);
+
+        // Rdc @ 1 kHz (heltal)
+        frm.Rdc1k.value = Number(COIL.Rdc1k).toFixed(0);
       }
+
       function showBuildInfo() {
         document.displayFrm.dia.value = COIL.dia;
       }
       function updateWireBuild(idx) {
-        var widx = parametersFrm.wireAWG.selectedIndex;
+        // Hämta det valda radiovärdet
+        var radios = document.getElementsByName("wireAWG");
+        var selectedAWG = null;
 
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            selectedAWG = Number(radios[i].value); // värdet är AWG
+            break;
+          }
+        }
+
+        if (selectedAWG === null) return;
+
+        // Hitta index i wireTable
+        var widx = wireTable.findIndex((w) => w.awg === selectedAWG);
+        if (widx === -1) return;
+
+        // Sätt COIL.dia beroende på build-index
         if (idx != 0) COIL.dia = wireTable[widx].heavy;
         else COIL.dia = wireTable[widx].single;
       }
-      function updateWireSelection(idx) {
+
+      function updateWireSelection(awg) {
+        var idx = wireTable.findIndex((w) => w.awg == Number(awg));
+        if (idx === -1) return;
+
         COIL.gauge = wireTable[idx].awg;
         COIL.Rdc1k = wireTable[idx].rdc;
+
         updateWireBuild(parametersFrm.build.selectedIndex);
       }
       /*
@@ -781,16 +860,7 @@
       //
       var bobbinTable = new Array();
       // bobbin constructor
-      function bobbin(
-        description,
-        length,
-        width,
-        height,
-        flange,
-        wire,
-        ohms,
-        winds
-      ) {
+      function bobbin(description, length, width, height, flange, wire, ohms) {
         this.name = description;
         this.L = length;
         this.W = width;
@@ -798,13 +868,12 @@
         this.flange = flange;
         this.wire = wire;
         this.ohms = ohms;
-        this.winds = winds;
       }
       //
       function initBobbinTable() {
         var idx = 0;
         /* NOTE: "flange is the bobbin width, not the core width */
-        //********************....description........length..width.height.flange..wire.ohms..winds
+        //********************....description........length..width.height.flange..wire.ohms..
         //IN INCHES
         bobbinTable[idx++] = new bobbin(
           "Humbucker (50 mm) (8,5mm height)",
@@ -813,8 +882,7 @@
           0.3348, //HEIGHT
           0.7, //FLANGE
           42, //STANDARD AWG
-          3715, //STANDARD OHMS
-          4200 //STANDARD WINDS
+          3715 //STANDARD OHMS
         );
         bobbinTable[idx++] = new bobbin(
           "PAF (50 mm)",
@@ -823,8 +891,7 @@
           0.25,
           0.7,
           42,
-          3715,
-          4200
+          3715
         );
         bobbinTable[idx++] = new bobbin(
           "Humbucker (52 mm) (8,5mm height)",
@@ -833,8 +900,7 @@
           0.3348, //HEIGHT
           0.7,
           42,
-          3715,
-          4200
+          3715
         );
         bobbinTable[idx++] = new bobbin(
           "Strat 1967",
@@ -843,8 +909,16 @@
           0.436,
           0.625,
           42,
-          5880,
-          7656
+          5880
+        );
+        bobbinTable[idx++] = new bobbin(
+          "Humbucker 7-string",
+          2.677,
+          0.2913,
+          0.3527,
+          0.6456,
+          44,
+          7250
         );
       }
       // build pickup option list for select box menu
@@ -854,7 +928,7 @@
         optionList[0] = new Option(bobbinTable[0].name, i, true, true);
         for (i = 0; i < bobbinTable.length; i++) {
           // select newest addition to table as low-rent unit test
-          isSelected = bobbinTable[i].name == "Precision Bass" ? true : false;
+          isSelected = bobbinTable[i].name == "PAF (50mm)" ? true : false;
           optionList[i] = new Option(
             bobbinTable[i].name,
             i,
@@ -881,10 +955,9 @@
         COIL.W = bobbinTable[idx].W;
         COIL.H = bobbinTable[idx].H;
         COIL.flange = bobbinTable[idx].flange;
-        COIL.winds = bobbinTable[idx].winds;
         COIL.gauge = bobbinTable[idx].gauge;
         updateResistance(bobbinTable[idx].ohms);
-        //	  showWinds() ;
+        //showWinds() ;
       }
       /*
        ** The money shot
