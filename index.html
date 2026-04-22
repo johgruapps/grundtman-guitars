@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -39,7 +39,11 @@
     />
     <style>
       .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
     </style>
     <style>
@@ -58,18 +62,18 @@
       }
     </style>
   </head>
-  <body class="bg-[#000000] text-gray-100 flex flex-col">
+  <body class="bg-[#EDE8D0] flex flex-col">
     <!-- Hero Section: Image left, Text right -->
 
     <section class="flex flex-col items-center justify-center py-12">
       <img
-        class="w-56 sm:w-72 md:w-96 lg:w-[28rem] invert mb-6"
+        class="w-56 sm:w-72 md:w-96 lg:w-[28rem] mb-6 mix-blend-hard-light"
         src="/images/full_logo.png"
         alt="Logo"
       />
 
       <div class="mx-auto flex flex-col items-center md:w-2/3 fade-slide-up">
-        <h1 class="text-center text-gray-200 mt-2 max-w-xl mx-auto">
+        <h1 id="txt" class="text-center mt-2 max-w-xl mx-auto">
           Tillverkning av handlindade gitarrmikrofoner, i Örnsköldsvik.
           <br />
           Utför även service och reparation av gitarrer.
@@ -77,10 +81,10 @@
       </div>
     </section>
 
-    <section id="contact" class="mt-16 text-gray-100">
+    <section id="contact" class="mt-16">
       <div class="max-w-xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-2">Kontakt</h2>
-        <p class="mb-8 text-gray-400">
+        <p class="mb-8">
           Funderingar, eller taggad på att beställa en gitarrmikrofon?
         </p>
 
@@ -116,15 +120,15 @@
     </section>
 
     <!-- 🔊 PRODUKTER -->
-    <section id="produkter" class="max-w-6xl mx-auto px-4 mt-10">
+    <section id="produkter" class="mx-auto px-4 mt-10">
       <h2 class="text-2xl font-semibold mx-auto p-6 mt-10">Produkter</h2>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-slide-up">
+      <div
+        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-slide-up text-white"
+      >
         <!-- Exempel på produktkort -->
 
-        <div
-          class="bg-[#1A1815] border border-neutral-700 rounded-2xl shadow-sm hover:shadow-md transition p-6"
-        >
+        <div class="bg-[#1A1815] rounded-2xl p-6">
           <img
             src="/images/humbucker_rockbreaker.jpg"
             alt="Gitarrmick"
@@ -132,9 +136,7 @@
           />
           <h3 class="font-semibold text-lg">Rockbreaker</h3>
 
-          <div
-            class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs mt-4"
-          >
+          <div class="divide-y divide-gray-200 rounded-2xl shadow-xs mt-4">
             <div class="m:px-8">
               <ul>
                 <a class="flex items-center">Medium high output pickup:</a>
@@ -220,7 +222,7 @@
               </ul>
             </div>
 
-            <hr class="h-px mt-4 border-0 dark:bg-gray-400" />
+            <hr class="h-0 mt-4" />
 
             <div class="flex items-start justify-center">
               <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
@@ -308,9 +310,7 @@
           </div>
         </div>
 
-        <div
-          class="bg-[#1A1815] border border-neutral-700 rounded-2xl shadow-sm hover:shadow-md transition p-6"
-        >
+        <div class="bg-[#1A1815] rounded-2xl p-6">
           <img
             src="/images/humbucker_dank.jpg"
             alt="Gitarrmick"
@@ -318,9 +318,7 @@
           />
           <h3 class="font-semibold text-lg">The Dank</h3>
 
-          <div
-            class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs mt-4"
-          >
+          <div class="divide-y divide-gray-200 rounded-2xl shadow-xs mt-4">
             <div class="m:px-8">
               <ul>
                 <a class="flex items-center">High output pickup:</a>
@@ -407,7 +405,7 @@
             </div>
           </div>
 
-          <hr class="h-px mt-4 border-0 dark:bg-gray-400" />
+          <hr class="h-0 mt-4" />
 
           <div class="flex items-start justify-center">
             <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
@@ -498,9 +496,7 @@
           </div>
         </div>
 
-        <div
-          class="bg-[#1A1815] border border-neutral-700 rounded-2xl shadow-sm hover:shadow-md transition p-6"
-        >
+        <div class="bg-[#1A1815] rounded-2xl p-6">
           <img
             src="/images/humbucker_zebra.jpg"
             alt="Gitarrmick"
@@ -508,9 +504,7 @@
           />
           <h3 class="font-semibold text-lg">Zebrabucker</h3>
 
-          <div
-            class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs mt-4"
-          >
+          <div class="divide-y divide-gray-200 rounded-2xl shadow-xs mt-4">
             <div class="m:px-8">
               <ul>
                 <a class="flex items-center">Medium output pickup:</a>
@@ -601,52 +595,56 @@
     </section>
 
     <!-- 🔊 SERVICE -->
-    <section id="produkter" class="max-w-6xl px-4">
-      <section class="max-w-2xl p-6 mt-10">
+    <section id="produkter" class="max-w-6xl">
+      <section class="max-w-2xl mx-auto p-6 mt-10">
         <h2 class="text-xl font-bold mb-4">Gitarrservice i Örnsköldsvik</h2>
 
-        <p class="text-sm text-gray-400 mb-4">
+        <p class="mb-4">
           Jag erbjuder professionell gitarrservice i Örnsköldsvik för både
           elgitarrer och akustiska gitarrer. Oavsett om du behöver strängbyte,
           justering av hals och stall eller installation av gitarrmikrofon
           hjälper jag dig att få bästa möjliga spelkänsla och ljud.
         </p>
 
-        <p class="text-sm text-gray-400 mb-4">
+        <p class="mb-4">
           Tjänsterna passar både nybörjare och erfarna musiker i Örnsköldsvik
           med omnejd. Varje gitarr behandlas individuellt med fokus på
           noggrannhet och kvalitet.
         </p>
 
-        <p class="text-sm text-gray-400">
+        <p>
           Kontakta mig om du söker pålitlig gitarrservice i Örnsköldsvik eller
           vill boka tid för installation av gitarrmikrofon, felsökning av
           elektronik eller en komplett setup.
         </p>
       </section>
 
-      <section class="max-w-2xl p-6">
-        <h2 class="text-2xl font-semibold mb-4">Prislista för gitarrservice</h2>
-
+      <section class="max-w-2xl p-6 mx-auto">
         <div
-          class="overflow-hidden max-w-2xl rounded-lg border border-gray-200"
+          class="overflow-hidden max-w-2xl shadow-xl rounded-lg border bg-amber-50"
         >
-          <table class="w-full text-sm">
-            <thead class="bg-gray-100">
+          <table class="w-full">
+            <thead class="bg-neutral-800 text-white">
               <tr>
-                <th class="px-4 py-3 text-left font-semibold text-black">
-                  Tjänst
-                </th>
-                <th class="px-4 py-3 text-right font-semibold text-black">
+                <h2
+                  class="bg-neutral-800 px-4 py-3 text-xl font-bold text-white"
+                >
+                  Prislista för gitarrservice
+                </h2>
+              </tr>
+              <tr>
+                <th class="px-4 py-3 text-left font-medium">Tjänst</th>
+                <th class="px-4 py-3 text-right font-medium">
                   Pris (inkl. moms)
                 </th>
               </tr>
             </thead>
+
             <tbody class="divide-y">
               <tr>
                 <td class="px-4 py-3">
                   <p class="font-medium">Strängbyte</p>
-                  <p class="text-gray-400 text-xs">
+                  <p class="text-s">
                     Byte av strängar på el- eller akustisk gitarr.
                   </p>
                 </td>
@@ -655,7 +653,7 @@
               <tr>
                 <td class="px-4 py-3">
                   <p class="font-medium">Full setup</p>
-                  <p class="text-gray-400 text-xs">
+                  <p class="text-xs">
                     Komplett genomgång: hals, stall, intonation och strängbyte.
                   </p>
                 </td>
@@ -664,7 +662,7 @@
               <tr>
                 <td class="px-4 py-3">
                   <p class="font-medium">Full setup DELUXE</p>
-                  <p class="text-gray-400 text-xs">
+                  <p class="text-xs">
                     Komplett genomgång: hals, stall, intonation och strängbyte.
                     <br />
                     (Inkluderar rengöring av greppbräda.)
@@ -675,7 +673,7 @@
               <tr>
                 <td class="px-4 py-3">
                   <p class="font-medium">Installation av gitarrmikrofon</p>
-                  <p class="text-gray-400 text-xs">
+                  <p class="text-xs">
                     Montering och inkoppling av mikrofon på elgitarr.
                   </p>
                 </td>
@@ -684,7 +682,7 @@
               <tr>
                 <td class="px-4 py-3">
                   <p class="font-medium">Felsökning elektronik</p>
-                  <p class="text-gray-400 text-xs">
+                  <p class="text-xs">
                     Diagnos av brus, glapp eller trasiga komponenter. <br />
                     Förslag på åtgärd.
                   </p>
@@ -711,24 +709,25 @@
 
     <section class="max-w-6xl mx-auto px-4 py-20">
       <h2 class="text-2xl font-semibold text-center mb-4">Digitala verktyg</h2>
+
       <a
         href="tools/coil_calc.html"
         target="_blank"
-        class="block bg-[#1A1815] border border-neutral-700 rounded-2xl shadow-sm transition p-6 hover:bg-amber-900"
+        class="flex items-center border border-red-700 hover:bg-amber-100 py-2 px-6 gap-2 rounded inline-flex items-center"
       >
-        <h3 class="font-semibold text-lg">Pickup Coil — Calculator</h3>
-
-        <div
-          class="divide-y text-gray-200 divide-gray-200 rounded-2xl shadow-xs mt-4"
+        <span> Pickup Coil — Winding estimator </span>
+        <svg
+          class="w-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          class="w-6 h-6 ml-2"
         >
-          <div class="m:px-8">
-            <ul>
-              <p class="w-full text-center text-2xl">
-                <span>Open</span>
-              </p>
-            </ul>
-          </div>
-        </div>
+          <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
       </a>
     </section>
 
@@ -789,7 +788,7 @@
           </div>
 
           <p class="mt-8 text-sm/6 md:order-1 md:mt-0">
-            &copy; 2025 Grundtman Guitars. Alla rättigheter reserverade.
+            &copy; 2026 Grundtman Guitars. Alla rättigheter reserverade.
           </p>
         </div>
       </div>
@@ -820,11 +819,11 @@
         audio.addEventListener("play", () => (icon.textContent = "pause"));
         audio.addEventListener(
           "pause",
-          () => (icon.textContent = "play_arrow")
+          () => (icon.textContent = "play_arrow"),
         );
         audio.addEventListener(
           "ended",
-          () => (icon.textContent = "play_arrow")
+          () => (icon.textContent = "play_arrow"),
         );
       });
 
