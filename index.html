@@ -119,484 +119,389 @@
       </div>
     </section>
 
-    <!-- 🔊 PRODUKTER -->
-    <section id="produkter" class="mx-auto px-4 mt-10">
-      <h2 class="text-2xl font-semibold mx-auto p-6 mt-10">Produkter</h2>
+    <section>
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <header>
+          <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
+            Mikrofoner
+          </h2>
 
-      <div
-        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-slide-up text-white"
-      >
-        <!-- Exempel på produktkort -->
+          <p class="mt-4 max-w-md text-gray-500">
+            Handgjorda gitarrmickar, byggda för ton, känsla och precision. Varje
+            mick är noggrant lindad för att leverera det bästa ljudet - byggd
+            för musiker som bryr sig om sitt sound.
+          </p>
+        </header>
 
-        <div class="bg-[#1A1815] rounded-2xl p-6">
-          <img
-            src="/images/humbucker_rockbreaker.jpg"
-            alt="Gitarrmick"
-            class="rounded-xl mb-4 mx-auto"
-          />
-          <h3 class="font-semibold text-lg">Rockbreaker</h3>
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <li>
+            <a class="group block overflow-hidden">
+              <img
+                src="/images/humbucker_rockbreaker.jpg"
+                alt=""
+                class="h-87.5 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-112.5"
+              />
 
-          <div class="divide-y divide-gray-200 rounded-2xl shadow-xs mt-4">
-            <div class="m:px-8">
-              <ul>
-                <a class="flex items-center">Medium high output pickup:</a>
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
+              <div class="relative pt-3">
+                <h3 class="text-xs text-gray-700">Rockbreaker</h3>
 
-                  <a>Handlindad</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Alnico V-magnet</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>42 AWG koppartråd</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Splittbar</a>
-                </li>
-
-                <p class="w-full text-center text-2xl">
-                  <span class="humbuckerPrice"></span>
+                <p class="mt-2">
+                  <span class="humbuckerPrice tracking-wider text-gray-900">
+                  </span>
                 </p>
-              </ul>
-            </div>
-
-            <hr class="h-0 mt-4" />
-
-            <div class="flex items-start justify-center">
-              <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
-                <div
-                  class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-                >
-                  <button class="play-btn flex-shrink-0" aria-label="Play">
-                    <span class="material-symbols-outlined text-3xl"
-                      >play_arrow</span
-                    >
-                  </button>
-                  <span
-                    class="title text-sm font-medium ml-3 leading-snug break-words"
-                    >Overdrive</span
-                  >
-                  <audio
-                    class="audio sr-only"
-                    src="audio/rockbreaker/Rockbreaker_Overdrive_1.wav"
-                    preload="metadata"
-                    controlsList="nodownload"
-                  ></audio>
-                </div>
-
-                <div
-                  class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-                >
-                  <button class="play-btn flex-shrink-0" aria-label="Play">
-                    <span class="material-symbols-outlined text-3xl"
-                      >play_arrow</span
-                    >
-                  </button>
-                  <span
-                    class="title text-sm font-medium ml-3 leading-snug break-words"
-                    >Dist</span
-                  >
-                  <audio
-                    class="audio sr-only"
-                    src="audio/rockbreaker/Rockbreaker_Dist_1.wav"
-                    preload="metadata"
-                    controlsList="nodownload"
-                  ></audio>
-                </div>
-
-                <div
-                  class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-                >
-                  <button class="play-btn flex-shrink-0" aria-label="Play">
-                    <span class="material-symbols-outlined text-3xl"
-                      >play_arrow</span
-                    >
-                  </button>
-                  <span
-                    class="title text-sm font-medium ml-3 leading-snug break-words"
-                    >Clean</span
-                  >
-                  <audio
-                    class="audio sr-only"
-                    src="audio/rockbreaker/Rockbreaker_Clean_1.wav"
-                    preload="metadata"
-                    controlsList="nodownload"
-                  ></audio>
-                </div>
-
-                <div
-                  class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-                >
-                  <button class="play-btn flex-shrink-0" aria-label="Play">
-                    <span class="material-symbols-outlined text-3xl"
-                      >play_arrow</span
-                    >
-                  </button>
-                  <span
-                    class="title text-sm font-medium ml-3 leading-snug break-words"
-                    >Overdrive split</span
-                  >
-                  <audio
-                    class="audio sr-only"
-                    src="audio/rockbreaker/Rockbreaker_Overdrive split_1.wav"
-                    preload="metadata"
-                    controlsList="nodownload"
-                  ></audio>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#1A1815] rounded-2xl p-6">
-          <img
-            src="/images/humbucker_dank.jpg"
-            alt="Gitarrmick"
-            class="rounded-xl mb-4 mx-auto"
-          />
-          <h3 class="font-semibold text-lg">The Dank</h3>
-
-          <div class="divide-y divide-gray-200 rounded-2xl shadow-xs mt-4">
-            <div class="m:px-8">
-              <ul>
-                <a class="flex items-center">High output pickup:</a>
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Handlindad</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Alnico VIII-magnet</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>44 AWG koppartråd</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Splittbar</a>
-                </li>
-
-                <p class="w-full text-center text-2xl">
-                  <span class="humbuckerPrice"></span>
+                <p class="mt-2">
+                  <span class="tracking-wider text-gray-900 text-xs"
+                    >Handlindad, medium high output, Alnico V-magnet, splittbar
+                  </span>
                 </p>
-              </ul>
-            </div>
-          </div>
 
-          <hr class="h-0 mt-4" />
-
-          <div class="flex items-start justify-center">
-            <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
-              <!-- Player 1 -->
-              <div
-                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-              >
-                <button class="play-btn flex-shrink-0" aria-label="Play">
-                  <span class="material-symbols-outlined text-3xl"
-                    >play_arrow</span
+                <div class="space-y-2">
+                  <details
+                    class="group [&amp;_summary::-webkit-details-marker]:hidden"
                   >
-                </button>
-                <span
-                  class="title text-sm font-medium ml-3 leading-snug break-words"
-                  >Metalcore</span
-                >
-                <audio
-                  class="audio sr-only"
-                  src="audio/My Curse - Metalcore.wav"
-                  preload="metadata"
-                  controlsList="nodownload"
-                ></audio>
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg border px-2 py-3 font-medium text-gray-900 hover:bg-amber-100"
+                    >
+                      <span class="flex items-center gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          width="16"
+                          height="16"
+                          class="size-5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5"
+                          ></path>
+                        </svg>
+
+                        Lyssningsexempel
+                      </span>
+
+                      <svg
+                        class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        ></path>
+                      </svg>
+                    </summary>
+
+                    <div class="flex items-start justify-center">
+                      <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Overdrive</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/rockbreaker/Rockbreaker_Overdrive_1.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Dist</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/rockbreaker/Rockbreaker_Dist_1.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Clean</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/rockbreaker/Rockbreaker_Clean_1.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Overdrive split</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/rockbreaker/Rockbreaker_Overdrive split_1.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </div>
               </div>
+            </a>
+          </li>
 
-              <!-- Player 2 -->
-              <div
-                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-              >
-                <button class="play-btn flex-shrink-0" aria-label="Play">
-                  <span class="material-symbols-outlined text-3xl"
-                    >play_arrow</span
-                  >
-                </button>
-                <span
-                  class="title text-sm font-medium ml-3 leading-snug break-words"
-                  >Progressive Rock</span
-                >
-                <audio
-                  class="audio sr-only"
-                  src="audio/Tom Sawyer - Progressive Rock.wav"
-                  preload="metadata"
-                  controlsList="nodownload"
-                ></audio>
-              </div>
+          <li>
+            <a class="group block overflow-hidden">
+              <img
+                src="/images/humbucker_dank.jpg"
+                alt=""
+                class="h-87.5 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-112.5"
+              />
 
-              <!-- Player 3 -->
-              <div
-                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-              >
-                <button class="play-btn flex-shrink-0" aria-label="Play">
-                  <span class="material-symbols-outlined text-3xl"
-                    >play_arrow</span
-                  >
-                </button>
-                <span
-                  class="title text-sm font-medium ml-3 leading-snug break-words"
-                  >Clean</span
-                >
-                <audio
-                  class="audio sr-only"
-                  src="audio/Windowpane - Clean.wav"
-                  preload="metadata"
-                  controlsList="nodownload"
-                ></audio>
-              </div>
+              <div class="relative pt-3">
+                <h3 class="text-xs text-gray-700">The Dank</h3>
 
-              <!-- Player 4 -->
-              <div
-                class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
-              >
-                <button class="play-btn flex-shrink-0" aria-label="Play">
-                  <span class="material-symbols-outlined text-3xl"
-                    >play_arrow</span
-                  >
-                </button>
-                <span
-                  class="title text-sm font-medium ml-3 leading-snug break-words"
-                  >Trad. Metal</span
-                >
-                <audio
-                  class="audio sr-only"
-                  src="audio/2 Minutes To Midnight - Traditional Metal.wav"
-                  preload="metadata"
-                  controlsList="nodownload"
-                ></audio>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#1A1815] rounded-2xl p-6">
-          <img
-            src="/images/humbucker_zebra.jpg"
-            alt="Gitarrmick"
-            class="rounded-xl mb-4 mx-auto"
-          />
-          <h3 class="font-semibold text-lg">Zebrabucker</h3>
-
-          <div class="divide-y divide-gray-200 rounded-2xl shadow-xs mt-4">
-            <div class="m:px-8">
-              <ul>
-                <a class="flex items-center">Medium output pickup:</a>
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Handlindad</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Alnico II-magnet</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>42 AWG koppartråd</a>
-                </li>
-
-                <li class="flex items-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-5 text-amber-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5"
-                    />
-                  </svg>
-
-                  <a>Splittbar</a>
-                </li>
-
-                <p class="w-full text-center text-2xl">
-                  <span class="humbuckerPrice"></span>
+                <p class="mt-2">
+                  <span
+                    class="humbuckerPrice tracking-wider text-gray-900"
+                  ></span>
                 </p>
-              </ul>
-            </div>
-          </div>
-        </div>
+                <p class="mt-2">
+                  <span class="tracking-wider text-gray-900 text-xs"
+                    >Handlindad, high output, Alnico VIII-magnet, splittbar
+                  </span>
+                </p>
+
+                <div class="space-y-2">
+                  <details
+                    class="group [&amp;_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg border px-2 py-3 font-medium text-gray-900 hover:bg-amber-100"
+                    >
+                      <span class="flex items-center gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          width="16"
+                          height="16"
+                          class="size-5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5"
+                          ></path>
+                        </svg>
+
+                        Lyssningsexempel
+                      </span>
+
+                      <svg
+                        class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        ></path>
+                      </svg>
+                    </summary>
+
+                    <div class="flex items-start justify-center">
+                      <div class="grid grid-cols-2 gap-2 w-full max-w-2xl">
+                        <!-- Player 1 -->
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Metalcore</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/My Curse - Metalcore.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+
+                        <!-- Player 2 -->
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Progressive Rock</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/Tom Sawyer - Progressive Rock.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+
+                        <!-- Player 3 -->
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Clean</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/Windowpane - Clean.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+
+                        <!-- Player 4 -->
+                        <div
+                          class="audio-player flex items-center shadow-sm rounded-xl px-4 py-3"
+                        >
+                          <button
+                            class="play-btn flex-shrink-0"
+                            aria-label="Play"
+                          >
+                            <span class="material-symbols-outlined text-3xl"
+                              >play_arrow</span
+                            >
+                          </button>
+                          <span
+                            class="title text-sm font-medium ml-3 leading-snug break-words"
+                            >Trad. Metal</span
+                          >
+                          <audio
+                            class="audio sr-only"
+                            src="audio/2 Minutes To Midnight - Traditional Metal.wav"
+                            preload="metadata"
+                            controlsList="nodownload"
+                          ></audio>
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="group block overflow-hidden">
+              <img
+                src="/images/humbucker_zebra.jpg"
+                alt=""
+                class="h-87.5 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-112.5"
+              />
+
+              <div class="relative pt-3">
+                <h3 class="text-xs text-gray-700">Zebrabucker</h3>
+
+                <p class="mt-2">
+                  <span
+                    class="humbuckerPrice tracking-wider text-gray-900"
+                  ></span>
+                </p>
+                <p class="mt-2">
+                  <span class="tracking-wider text-gray-900 text-xs"
+                    >Handlindad, medium output, Alnico II-magnet, splittbar
+                  </span>
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
     <!-- 🔊 SERVICE -->
-    <section id="produkter" class="max-w-6xl">
-      <section class="max-w-2xl mx-auto p-6 mt-10">
+    <section id="produkter" class="">
+      <section class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <h2 class="text-xl font-bold mb-4">Gitarrservice i Örnsköldsvik</h2>
 
         <p class="mb-4">
@@ -711,22 +616,46 @@
       <h2 class="text-2xl font-semibold text-center mb-4">Digitala verktyg</h2>
 
       <a
+        class="inline-flex items-center gap-2 rounded-sm border border-amber-500 bg-amber-500 px-8 py-3 text-white hover:bg-transparent hover:text-amber-500"
         href="tools/coil_calc.html"
-        target="_blank"
-        class="flex items-center border border-red-700 hover:bg-amber-100 py-2 px-6 gap-2 rounded inline-flex items-center"
       >
-        <span> Pickup Coil — Winding estimator </span>
+        <span class="text-sm font-medium">  Pickup Coil — Winding estimator  </span>
+
         <svg
-          class="w-4"
+          class="size-5 rtl:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
           viewBox="0 0 24 24"
-          class="w-6 h-6 ml-2"
+          stroke="currentColor"
         >
-          <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          ></path>
+        </svg>
+      </a>
+
+      <a
+        class="inline-flex items-center gap-2 rounded-sm border border-amber-500 bg-amber-500 px-8 py-3 text-white hover:bg-transparent hover:text-amber-500"
+        href="https://makerworld.com/en/models/2704256-drill-guide-for-bass-guitar-bridge-ground-wire#profileId-2998241"
+      >
+        <span class="text-sm font-medium">  Drill guide for bass bridge  </span>
+
+        <svg
+          class="size-5 rtl:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          ></path>
         </svg>
       </a>
     </section>
